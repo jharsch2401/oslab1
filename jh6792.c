@@ -4,6 +4,7 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 
+
 int main(){
 	while(1){
 		printf("lab1> ");
@@ -24,8 +25,8 @@ int main(){
 				printf("Child process %d will execute the command %s\n", getpid(), str);
 				char bin[20];	strcpy(bin, "/bin/");
 				strcat(bin, str);
-				char *progname[] = {str, NULL};
-				printf("%s\n", progname[0]);
+				char *progname[] = {bin, NULL};
+				printf("%s", progname[0]);
 				execve(bin, progname, NULL);
 				printf("Command Not Found!\n");
 				exit(pid);
