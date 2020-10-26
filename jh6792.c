@@ -4,31 +4,6 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 
-/*while(1){
- printf(“lab1> “);
- fgets()  get the input from the user. You can use a different API if you want.
- printf(“Parent Process %d\n”, getpid());
- if (the string entered by the user is a built-in command)
- {
- Check the string and based on it, do the corresponding tasks as stated below.
- If the built-in command is “exit” then ends the whole process using exit(0);
- }
- else
- {
- pid = fork();
- if( pid == 0 )  the created child process
- {
- printf(“Child process %d will execute the command %s\n”, ….);  print process
- ID of the child process and the string entered by the user.
- execve()  use the string entered by the user to transform the child process to
- the new process.
- if execution of the child process reaches this point, it means execve failed. In that
- case, print “Command Not Found!\n” and exits.
- }
- }
-wait till the child process finishes
-} */
-
 int main(){
 	while(1){
 		printf("lab1> ");
@@ -50,6 +25,7 @@ int main(){
 				char bin[20];	strcpy(bin, "/bin/");
 				strcat(bin, str);
 				char *progname[] = {str, NULL};
+				printf("%s\n", progname[0]);
 				execve(bin, progname, NULL);
 				printf("Command Not Found!\n");
 				exit(pid);
