@@ -10,9 +10,10 @@ int main(){
 		printf("lab1> ");
 		char str[20];
 		fgets(str, 20, stdin);
-		int prid = strcmp(str,"printid\n");
-		int ex = strcmp(str, "exit\n");
-		int gr = strcmp(str, "greet\n"); 
+		str[strlen(str)-1] = NULL;
+		int prid = strcmp(str,"printid");
+		int ex = strcmp(str, "exit");
+		int gr = strcmp(str, "greet"); 
 		if(gr == 0)
 			printf("Hello\n");
 		else if(prid == 0)
@@ -25,8 +26,7 @@ int main(){
 				printf("Child process %d will execute the command %s\n", getpid(), str);
 				char bin[20];	strcpy(bin, "/bin/");
 				strcat(bin, str);
-				char *progname[] = {bin, NULL};
-				printf("%s", progname[0]);
+				char *progname[] = {str, NULL};
 				execve(bin, progname, NULL);
 				printf("Command Not Found!\n");
 				exit(pid);
